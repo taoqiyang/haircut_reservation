@@ -1,0 +1,12 @@
+@import'index.wxss';
+
+.field-ok{ 
+    color:#eee;
+    font-size: 14px;    
+    height: 80rpx;
+    background-color: #e84445;
+}
+.field-ok-hover{
+    background-color: #e84445;
+    opacity: 0.7;
+}

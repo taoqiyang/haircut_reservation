@@ -1,0 +1,17 @@
+/* pages/my/index.wxss */
+@import '../reservation/index.wxss';
+
+.reservation-item {
+    display: flex;
+    flex-direction: column;
+    padding: 22rpx;
+    border-radius: 10rpx;
+    margin: 24rpx;
+    margin-bottom: 22rpx;
+    background-color: #fff;
+}
+
+.reservation-item-line {
+  margin-bottom: 12rpx;
+  font-size:32rpx;
+}

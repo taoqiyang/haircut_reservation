@@ -1,0 +1,46 @@
+<!--pages/admin/index.wxml-->
+<view style='height:100%;'>
+  <view class='container radio-container'>
+    <view class="field-item vc" style='margin-bottom: 0; padding-bottom:0;' bindtap='suUser'>
+      <text class="field-item-label">预约状态:</text>
+    </view>
+    <radio-group class="field-item radio-group" bindchange="statusChange">
+      <label class="radio-label" style='{{index <= 2 ? "margin-bottom:10rpx;" : ""}}' wx:for="{{reservation_status}}" wx:key="{{item.value}}">
+        <radio class="radio" value="{{item.value}}" checked="{{status === item.value}}" />
+        <text class="label-1__text">{{item.name}}</text>
+      </label>
+    </radio-group>
+
+    <view wx:if="{{false}}" class="field-item vc" style='margin-bottom: 0; padding-bottom:0;'>
+      <text class="field-item-label" style='{{status === 1 || status === 4 ? "color:gray;": ""}}'>预约处理人:</text>
+    </view>
+    <radio-group wx:if="{{false}}" class="field-item vc radio-group" bindchange="myProcessedChange">
+      <label class="radio-label" style='{{status === 1 || status === 4 ? "color:gray;": ""}}' wx:for="{{myProccessedItems}}" wx:key="{{item.value}}">
+        <radio class="radio" disabled="{{status === 1 || status === 4}}" value="{{item.value}}" checked="{{status !== 1 && status !== 4 && myProccessedItem === item.value}}" />
+        <text class="label-1__text">{{item.name}}</text>
+      </label>
+    </radio-group>
+  </view>
+  <scroll-view scroll-y class='{{reservations && reservations.length > 0 ? "scroll-view" : "n"}}' bindscrolltolower="reachBottom">
+    <view wx:for-items="{{reservations}}" wx:key="{{item.id}}" class='reservation-item' bindtap='itemClick' data-index='{{index}}'>
+      <text class='reservation-item-line' style='font-size:40rpx;'>预约编号: {{item.code}}</text>
+      <text wx:if="{{config.serviceTypeEnable}}" class='reservation-item-line'>服务类型: {{item.service_type_desc}}</text>
+      <text class='reservation-item-line'>服务对象: {{item.service_target_desc}}<text class='rt'>({{item.service_cost}}¥)</text></text>
+      <text class='reservation-item-line'>创建时间: {{item.create_time}}</text>
+      <text class='reservation-item-line'>预约时间: {{item.reservation_time}}</text>
+      <text class='reservation-item-line'>预约用户: {{item.user_name}}</text>
+      <text class='reservation-item-line'>用户地址: {{item.address}}</text>
+      <text class='reservation-item-line'>订单状态: <text class='ct'>{{item.status_desc}}</text></text>
+      <text class='reservation-item-line' wx:if="{{item.status === 4 && item.cancel_time}}">取消时间: {{item.cancel_time}}</text>
+      <text class='reservation-item-line' wx:if="{{item.status === 2 && item.accept_time}}">接单时间: {{item.accept_time}}</text>
+      <text class='reservation-item-line' wx:if="{{item.status === 7 && item.deny_time}}">拒绝时间: {{item.deny_time}}</text>
+      <text class='reservation-item-line' wx:if="{{item.status === 9 && item.service_start_time}}">处理时间: {{item.service_start_time}}</text>
+      <text class='reservation-item-line' wx:if="{{item.status === 10 && item.finish_time}}">完成时间: {{item.finish_time}}</text>
+    </view>
+  </scroll-view>
+
+  <view wx:if="{{!reservations || reservations.length == 0}}" style='margin-top:170rpx;display:flex; flex-direction:column; align-items:center; width: 100%;'>
+    <image mode="widthFix" style="width: 250rpx;" src="/images/pic_empty.png"></image>
+    <text style='color:#707070; font-size: 34rpx; margin-top:12rpx;font-align:center;'>没有预约订单</text>
+  </view>
+</view>

@@ -1,0 +1,44 @@
+{
+  "pages": [
+    "pages/index",
+    "pages/admin/index",
+    "pages/reservation/reservation",
+    "pages/my/index",
+    "pages/reservation/index",
+    "pages/admin/detail"
+  ],
+  "window": {
+    "backgroundColor": "#F6F6F6",
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#F6F6F6",
+    "navigationBarTitleText": "预约",
+    "navigationBarTextStyle": "black"
+  },
+  "tabBar": {
+    "color": "#7A7E83",
+    "selectedColor": "#3cc51f",
+    "borderStyle": "black",
+    "backgroundColor": "#ffffff",
+    "list": [
+      {
+        "pagePath": "pages/reservation/reservation",
+        "iconPath": "images/icon_main.png",
+        "selectedIconPath": "images/icon_main_HL.png",
+        "text": "预约"
+      },
+      {
+        "pagePath": "pages/my/index",
+        "iconPath": "images/icon_my.png",
+        "selectedIconPath": "images/icon_my_HL.png",
+        "text": "我的"
+      }
+    ]
+  },
+  "networkTimeout": {
+    "request": 30000,
+    "connectSocket": 10000,
+    "uploadFile": 60000,
+    "downloadFile": 60000
+  },
+  "debug": true
+}

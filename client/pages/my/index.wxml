@@ -1,0 +1,29 @@
+<!--pages/my/index.wxml-->
+<view wx:if="{{login}}" class='container'>
+  <view wx:if="{{!reservations || reservations.length == 0}}" style='display:flex; flex-direction:row; align-items:center; flex: 0.8;'>
+    <view wx:if="{{!reservations || reservations.length == 0}}" style='display:flex; flex-direction:column; align-items:center; width: 100%;'>
+      <image mode="widthFix" style="width: 250rpx;" src="/images/pic_empty.png"></image>
+      <text style='color:#707070; font-size: 34rpx; margin-top:12rpx;font-align:center;'>没有预约记录</text>
+    </view>
+  </view>
+  <view wx:else style='display:flex; flex-direction: column; align-self:stretch;'>
+    <view wx:for-items="{{reservations}}" wx:key="{{item.id}}" class='reservation-item'>
+      <text class='reservation-item-line' style='font-size:40rpx;'>预约编号: {{item.code}}</text>
+      <text wx:if="{{config.serviceTypeEnable}}" class='reservation-item-line'>服务类型: {{item.service_type_desc}}</text>
+      <text class='reservation-item-line'>服务对象: {{item.service_target_desc}}<text class='rt'>({{item.service_cost}}¥)</text></text>
+      <text class='reservation-item-line'>创建时间: {{item.create_time}}</text>
+      <text class='reservation-item-line'>预约时间: {{item.reservation_time}}</text>
+      <text class='reservation-item-line'>订单状态: <text class='ct'>{{item.status_desc}}</text></text>
+      <text class='reservation-item-line' wx:if="{{item.status === 4 && item.cancel_time}}">取消时间: {{item.cancel_time}}</text>
+      <text class='reservation-item-line' wx:if="{{item.status === 2 && item.accept_time}}">接单时间: {{item.accept_time}}</text>
+      <text class='reservation-item-line' wx:if="{{item.status === 7 && item.deny_time}}">拒绝时间: {{item.deny_time}}</text>
+      <text class='reservation-item-line' wx:if="{{item.status === 9 && item.service_start_time}}">处理时间: {{item.service_start_time}}</text>
+      <text class='reservation-item-line' wx:if="{{item.status === 10 && item.finish_time}}">完成时间: {{item.finish_time}}</text>
+    </view>
+  </view>
+</view>
+
+<form wx:else style='display:flex; flex-direction: column; align-items: stretch;' bindsubmit='go2main'>
+  <view style='text-align:center; margin-top: 200rpx;'>当前未登录</view>
+  <button class="reserve-submit-button" type="primary" formType="submit">去登录</button>
+</form>

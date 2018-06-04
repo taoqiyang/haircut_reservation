@@ -1,0 +1,78 @@
+<!--reserve.wxml-->
+<form bindsubmit="reverseSubmit" class='reserve-baseinfo' style="{{reserveSuccessed || requesting ? 'color:gray;' : ''}}">
+
+  <view class='info-type-container'>
+    <text class='info-type-text'>基本信息</text>
+  </view>
+  <view class="field-item vc">
+    <text class="field-item-label ">用户名</text>
+    <view class="field-item-val">
+      <input name="user_name" value="{{user.name}}" disabled="{{requesting || reserveSuccessed}}" placeholder="请输入姓名" />
+    </view>
+  </view>
+  <view class="field-item vc">
+    <text class="field-item-label ">手机号</text>
+    <view class="field-item-val">
+      <input disabled="{{requesting || reserveSuccessed}}" name="phone_number" value="{{user.phone_number}}" placeholder="您的手机号码" />
+    </view>
+  </view>
+
+  <view class="field-item vc" style='margin-bottom: 0'>
+    <text class="field-item-label" decode="{{true}}">地&nbsp;&nbsp;&nbsp;址</text>
+    <view class="field-item-val" bindtap="chooseLocation" disabled="{{requesting || reserveSuccessed}}">
+      <text class="field-item-label" style='{{locationMarker && locationMarker.address ? "" : "color: gray;"}}'>{{locationMarker && locationMarker.address ? locationMarker.address : "点击前往地图选择"}}</text>
+    </view>
+  </view>
+  <map id="map" wx:if="{{locationMarker && locationMarker.address != ''}}" markers="{{[locationMarker]}}" latitude="{{locationMarker.latitude}}" longitude="{{locationMarker.longitude}}" class="reserve-map" scale="19" show-location>
+  </map>
+  <!-- <view style='height: 2rpx;'></view> -->
+  <!-- <view class="field-item vc" style='margin-top:2rpx;'>
+    <text class="field-item-label">详细地址</text>
+    <view class="field-item-val">
+      <input disabled="{{requesting || reserveSuccessed}}" name="phone" value="{{phone}}" placeholder="小区名、几单元、门牌号" />
+    </view>
+  </view> -->
+  <textarea disabled="{{requesting || reserveSuccessed}}" name="address_detail" placeholder="地址详情。小区名、几单元、门牌号等。" class="reserve-desc" maxlength="40" style='margin-top:2rpx;' value='{{user.address_detail ? user.address_detail: ""}}' />
+
+  <view class='info-type-container'>
+    <text class='info-type-text'>预约信息</text>
+  </view>
+  <view wx:if="{{serviceTypeEnable}}" class="field-item vc" style='margin-bottom: 0; padding-bottom:0;'>
+    <text class="field-item-label">服务类型</text>
+    <!-- <view class="field-item-val" bindtap="chooseServiceType" disabled="{{requesting || reserveSuccessed}}">
+      <text class="field-item-label">{{serviceType.name}}</text>
+    </view> -->
+  </view>
+  <checkbox-group wx:if="{{serviceTypeEnable}}" bindchange="serviceTypeChange" class="field-item vc" style="padding-left: 40rpx;padding-top:10rpx;">
+    <label class="checkbox" wx:for="{{items}}" wx:key="{{item.id}}" style='margin-right:30rpx;' class='vc'>
+      <checkbox value="{{item.id}}" disabled='{{requesting || reserveSuccessed}}' checked="{{item.checked}}" style='zoom: 60%;' />{{item.name}}
+    </label>
+  </checkbox-group>
+
+  <view class="field-item vc" style='margin-bottom: 0; padding-bottom:0;'>
+    <text class="field-item-label">服务对象</text>
+  </view>
+  <radio-group class="field-item" style="padding-left: 40rpx;padding-top:10rpx;" bindchange="serviceTargetChange">
+    <label class="radio-label" wx:for="{{serviceTargets}}" wx:key="{{item.id}}">
+      <radio class="radio" value="{{item.id}}" disabled='{{requesting || reserveSuccessed}}' checked="{{serviceTarget.id === item.id}}" />
+      <text class="label-1__text">{{item.name}}<text class='rt'>({{item.cost}}¥)</text></text>
+    </label>
+  </radio-group>
+
+  <view class="field-item vc">
+    <text class="field-item-label ">预约时间</text>
+    <picker class="field-item-val-2  vc" disabled="{{requesting || reserveSuccessed}}" name="date" mode="date" value="{{date}}" start="{{startDate}}" end="{{endDate}}" bindchange="bindDateChange">
+      <view class="arrived-res vc">{{date}}</view>
+    </picker>
+    <picker class="field-item-val-2  vc" disabled="{{requesting || reserveSuccessed}}" name="time" mode="time" value="{{time}}" start="{{startTime}}" end="{{endTime}}" bindchange="bindTimeChange">
+      <view class="arrived-res vc">{{time}}</view>
+    </picker>
+  </view>
+
+  <textarea disabled="{{requesting || reserveSuccessed}}" name="message" placeholder="预约留言" class="reserve-desc" maxlength="40" />
+
+  <button loading="{{requesting}}" class="reserve-submit-button" disabled="{{requesting || reserveSuccessed}}" type="primary" formType="submit">{{reserveSuccessed ? "预约成功" : (requesting ? "预约中,请稍候": "预约")}}</button>
+
+
+</form>
+<view style="height:28rpx;"></view>

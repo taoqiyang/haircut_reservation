@@ -1,0 +1,78 @@
+<!--reserve.wxml-->
+<view wx:if="{{login && currentReservation}}">
+  <form bindsubmit="cancelReserve" class='reserve-baseinfo' style="{{reserveSuccessed || requesting ? 'color:gray;' : ''}}">
+
+    <view class='info-type-container' bindtap='suAdmin'>
+      <text class='info-type-text'>基本信息</text>
+    </view>
+    <view class="field-item vc">
+      <text class="field-item-label fw-700">用户名</text>
+      <view class="field-item-val">
+        <text>{{currentReservation.user_name}}</text>
+      </view>
+    </view>
+    <view class="field-item vc">
+      <text class="field-item-label fw-700">手机号</text>
+      <view class="field-item-val">
+        <text>{{currentReservation.phone_number}}</text>
+      </view>
+    </view>
+
+    <view class="field-item vc" style='margin-bottom: 0'>
+      <text class="field-item-label" decode="{{true}}">地&nbsp;&nbsp;&nbsp;址</text>
+      <view class="field-item-val">
+        <text class="field-item-label">{{locationMarker.address}}</text>
+      </view>
+    </view>
+    <map id="map" wx:if="{{locationMarker}}" markers="{{[locationMarker]}}" latitude="{{locationMarker.latitude}}" longitude="{{locationMarker.longitude}}" class="reserve-map" scale="19" show-location>
+    </map>
+    <textarea disabled="true" class="reserve-desc" maxlength="40" style='margin-top:2rpx;' value='{{"详细地址 " + currentReservation.address_detail}}' />
+
+    <view class='info-type-container'>
+      <text class='info-type-text'>预约信息</text>
+    </view>
+    <view class="field-item vc" wx:if="{{serviceTypeEnable}}" >
+      <text class="field-item-label">服务类型</text>
+      <view class="field-item-val">
+        <text class="field-item-label">{{currentReservation.service_type_desc}}</text>
+      </view>
+    </view>
+    <view class="field-item vc">
+      <text class="field-item-label">服务对象</text>
+      <view class="field-item-val">
+        <text class="field-item-label">{{currentReservation.service_target_desc}}<text class='rt'>({{currentReservation.service_cost}}¥)</text></text>
+      </view>
+    </view>
+    <!-- <view class="field-item vc">
+      <text class="field-item-label">服务价格</text>
+      <view class="field-item-val">
+        <text class="field-item-label rt">{{currentReservation.service_cost}}¥</text>
+      </view>
+    </view> -->
+    <view class="field-item vc">
+      <text class="field-item-label">预约时间</text>
+      <view class="field-item-val">
+        <text class="field-item-label">{{currentReservation.reservation_time}}</text>
+      </view>
+    </view>
+
+    <textarea disabled="true" class="reserve-desc" maxlength="40" value='{{currentReservation.message ? "预约留言 " + currentReservation.message : "无预约留言"}}' />
+
+    <view class='info-type-container'>
+      <text class='info-type-text'>预约状态</text>
+    </view>
+    <view class="field-item vc">
+      <text class="field-item-label">当前进度</text>
+      <view class="field-item-val">
+        <text class="field-item-label" style='color:#1AAD19;'>{{currentReservation.status_desc}}</text>
+      </view>
+    </view>
+ <button loading="{{requesting}}" class="reserve-submit-button {{currentReservation.status === 1 ? '' : 'n'}}" disabled="{{requesting}}" type="primary" formType="submit">{{requesting ? "取消预约中,请稍候": "取消预约"}}</button>
+  </form>
+  <view style="height:28rpx;"></view>
+</view>
+
+<form wx:else style='display:flex; flex-direction: column; align-items: stretch;' bindsubmit='go2Reserve'>
+  <view style='text-align:center; margin-top: 200rpx;' bindtap='suAdmin'>{{login ? '当前无预约' : '当前未登录'}}</view>
+  <button class="reserve-submit-button" type="primary" formType="submit">{{login ? '我要预约' : '登录'}}</button>
+</form>

@@ -1,0 +1,5 @@
+<!--pages/index.wxml-->
+<form style='display:flex; flex-direction: column; align-items: stretch;' bindsubmit='login'>
+  <view style='text-align:center; margin-top: 300rpx;'>当前未登录</view>
+  <button style="margin: 48rpx 48rpx 0rpx 48rpx;" type="primary" loading='{{logining}}' disabled='{{logining}}' formType="submit">{{logining ? '登录中，请稍候...': '登录'}}</button>
+</form>

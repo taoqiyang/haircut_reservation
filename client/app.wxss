@@ -1,0 +1,41 @@
+/**app.wxss**/
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-sizing: border-box;
+} 
+
+page {
+  background-color: #F8F8F8;
+  height: 100%;
+  font-size: 32rpx;
+  line-height: 1.6;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
+  font-size: 32rpx;
+  font-family: -apple-system-font,Helvetica Neue,Helvetica,sans-serif;
+}
+
+
+/**隐藏**/
+.n{display: none;}
+
+/**居中**/
+.cc{ display: flex;justify-content: center; align-items: center;}
+
+/**垂直居中**/
+.vc{ display: flex; align-items: center;}
+/**colorful background**/
+.cb{ background-color: #1AAD19}
+/**colorful text**/
+.ct{ color: #09bb07}
+
+/**red background**/
+.rb{ background-color: #e64340}
+/**red text**/
+.rt{ color: #e64340}

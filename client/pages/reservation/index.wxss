@@ -1,0 +1,156 @@
+.reserve-baseinfo {
+  /* padding: 16rpx 28rpx 16rpx 28rpx; */
+  /* background-color: white; */
+  /* margin-bottom: 32rpx; //没有地图时放开*/
+  /* color: black; */
+  font-size: 36rpx;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+}
+
+.reserve-desc {
+  padding: 16rpx 22rpx 16rpx 22rpx;
+  width: auto;
+  height: 80rpx;
+  background-color: white;
+}
+
+.reserve-address {
+  padding: 0rpx 22rpx 0rpx 22rpx;
+  background-color: #f5f5f5;
+  /* margin-top: 16rpx; */
+  margin: 16rpx 28rpx 16rpx 28rpx;
+  color: gray;
+  font-size: 26rpx; 
+  height: 46rpx;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  border-radius: 22rpx;
+  align-self: flex-start;
+  max-width: 70%;
+  border: 2rpx solid lightgray;
+}
+
+.reserve-map {
+  width: auto;
+  height: 260rpx;
+}
+
+.reserve-otherinfo {
+  padding: 0rpx 30rpx 0rpx 30rpx;
+  background-color: white;
+  margin-bottom: 2rpx;
+  /* color: black; */
+  font-size: 30rpx;
+  height: 90rpx;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.reserve-icon {
+  width: 48rpx;
+  margin-right: 16rpx;
+}
+
+.reserve-submit-button {
+  margin: 32rpx 48rpx 0rpx 48rpx;
+}
+
+/* //aa */
+.field-item{
+    display: flex;
+    flex-direction: row;
+    padding: 22rpx;
+    /* border-bottom:1px #eaeaea solid; */
+    margin-bottom: 2rpx;
+    background-color: #fff;
+}
+.field-item-2{
+    display: flex;
+    flex-direction: row; 
+    padding:0 22rpx;
+}
+.field-item-label{
+    flex:4;
+    /* text-align: center; */
+}
+.field-item-val{
+    flex:15;
+    display: flex;
+}
+
+.field-item-val-2{
+    flex: 7;
+    flex-direction: column;
+}
+
+.val-2{  
+    padding: 22rpx 0;
+    border-bottom:1px #eaeaea solid;
+}
+
+
+.field-item-3{
+    display: flex;
+    flex-direction: row;  
+    padding:22rpx 22rpx;
+    border-bottom: 1px #eaeaea solid;
+}
+
+
+
+/**中间项目**/
+.pro-info{
+    margin: 30rpx 0;
+    border-top:1px #d6d6d6 solid;
+    /* border-bottom:1px #d6d6d6 solid; */
+    margin-bottom: 2rpx;
+    background-color: #fff;
+}
+.info-item{
+    display: flex;
+    flex-direction: row;
+    padding:22rpx 30rpx;
+}
+.item-left{
+    flex:1;
+}
+.item-right{
+    display: flex;
+    flex-direction: row;
+}
+.item-right-val{
+    padding:12rpx;
+}
+
+
+.info-type-container{
+  margin: 24rpx 0 0 0;
+  display: flex; 
+  padding-left: 22rpx;
+}
+.info-type-text {
+  font-size: 34rpx;
+  background-color: #09bb07;
+  color: white;
+  padding: 8rpx 22rpx 4rpx 22rpx;
+  border-top-left-radius: 8rpx;
+  border-top-right-radius: 8rpx;
+  /* border:2rpx white solid; */
+}
+
+.radio-label {
+  width: 32%;
+  display: flex;
+  align-items: center;
+  vertical-align: middle;
+}
+
+.radio {
+  zoom: 65%;
+  margin-right: 4rpx;
+}
